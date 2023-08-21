@@ -40,44 +40,39 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
           )
         ],
       )),
-      floatingActionButton: Column(
+      floatingActionButton: const Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          FloatingActionButton(
-            shape: const StadiumBorder(),
-            onPressed: () {
-              setState(() {
-                clickCount = 0;
-              });
-            },
-            child: const Icon(Icons.refresh),
-          ),
-          const SizedBox(
+          CustomButton(icon: Icons.refresh), //Botón para recargar app
+          SizedBox(
             height: 10,
           ),
-          FloatingActionButton(
-            shape: const StadiumBorder(),
-            onPressed: () {
-              setState(() {
-                clickCount++;
-              });
-            },
-            child: const Icon(Icons.plus_one),
-          ),
-          const SizedBox(
+          CustomButton(icon: Icons.plus_one), //Botón para sumar al contador
+          SizedBox(
             height: 10,
           ),
-          FloatingActionButton(
-            shape: const StadiumBorder(),
-            onPressed: () {
-              setState(() {
-                clickCount--;
-              });
-            },
-            child: const Icon(Icons.exposure_minus_1),
-          )
+          CustomButton(
+              icon: Icons.exposure_minus_1) //Botón para restas al contador
         ],
       ),
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  final IconData icon;
+
+  const CustomButton({
+    super.key,
+    required this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      shape: const StadiumBorder(),
+      onPressed: () {},
+      child: Icon(icon),
     );
   }
 }
